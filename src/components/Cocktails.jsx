@@ -3,11 +3,31 @@ import { cocktailLists, mockTailLists } from '../../constants'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger,SplitText } from 'gsap/all'
 import gsap from 'gsap'
+import { useMediaQuery } from 'react-responsive'
 
 gsap.registerPlugin(ScrollTrigger,)
 
 const Cocktails = () => {
 
+    const isMobile = useMediaQuery({maxWidth:768});
+
+    const fromVars1 = isMobile
+      ? { x: -100, y:100 , rotate:45}
+      : { x: -100, y: -100, };
+    
+    const toVars1 = isMobile
+      ? { x: -100, y:300, rotate: 10 }
+      : { x: -50, y: 100, };
+      
+    const fromVars2 = isMobile
+      ? {x:100,y:100,rotate:-45}
+      : { x:100, y: 100, rotate: 10 };
+    
+    const toVars2 = isMobile
+      ? {x:50,y:700,rotate:-10 , ease:'power1.inOut'}
+      : { x:80, y:-10, rotate: 25 };
+      
+        
     useGSAP(() =>{
         const parallaxTimeLine = gsap.timeline({
             scrollTrigger:{
@@ -17,18 +37,14 @@ const Cocktails = () => {
                 scrub:true,
             }
         })
-        .from('#c-left-leaf',{
-            x:-100,y:100
-        })
-        .from('#c-right-leaf',{
-            x:100,y:100
-        })
+        .fromTo('#c-left-leaf',fromVars1,toVars1)
+        .fromTo('#c-right-leaf',fromVars2,toVars2)
     })
 
   return (
     <section id='cocktails' className='noisy'>
         <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id='c-left-leaf' />
-        <img src="/images/cocktail-right-leaf.png" alt="r-leaf" id='c-right-leaf' />
+        <img src="/images/cocktail-right-leaf.png" alt="r-leaf" id='c-right-leaf'/>
 
         <div className="list">
             <div className="popular">

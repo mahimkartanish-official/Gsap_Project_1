@@ -18,7 +18,7 @@ const Menu = () => {
             
             scrollTrigger:{
                 trigger:'#menu',
-                start:'top 20%',
+                start:'top 40%',
                 end:'top 95%',
                 scrub:1.5
             }
@@ -26,6 +26,7 @@ const Menu = () => {
         .from('.cocktail-tabs button',{
             opacity:0,stagger:{amount:1},duration:3
         })
+        .to('#m-right-leaf',{y:100 , ease:'power1.inOut'})
         
     })
 

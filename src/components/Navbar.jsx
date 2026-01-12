@@ -16,8 +16,7 @@ const Navbar = () => {
         tween_Nav.fromTo('nav',
             {backgroundColor:'transparent'},
             {
-                backgroundColor:'#00000050',
-                backgroundFilter:'blur(10px)',
+                backgroundColor:'#00000020',
                 duration:1,
                 ease:'power1.inOut'
             }
@@ -26,7 +25,7 @@ const Navbar = () => {
 
 
   return (
-    <nav>
+    <nav className='gradient-nav'>
         <div>
             <a href="#home" className='flex items-center gap-2'>
                 <img src="/images/logo.png" alt="" />
