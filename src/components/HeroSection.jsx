@@ -46,7 +46,7 @@ const HeroSection = () => {
         .to('.left-leaf',{y:-200},0)
 
         const starValue = isMobile? 'top 50%':'center 60%';
-        const endValue = isMobile? '120 top':'bottom top';
+        const endValue = isMobile? '120 top':'87% top';
 
         const tl = gsap.timeline({
             scrollTrigger:{
@@ -103,8 +103,9 @@ const HeroSection = () => {
 
         </section>
 
-        <div className='video absolute inset-0'>
-            <video ref={videoRef} src="/videos/output.mp4" muted playsInline preload='auto' ></video>
+        <div className='noisy rounded-2xl'/>
+        <div className='video absolute inset-0 '>
+            <video ref={videoRef} src="/videos/output.mp4" muted playsInline preload='auto' className='rounded-2xl'></video>
 
         </div>
     </>
