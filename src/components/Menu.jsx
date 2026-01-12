@@ -12,13 +12,33 @@ const Menu = () => {
 
     const [currentIndex,setCurrentIndex] = useState(0);
 
-
-
     useGSAP(() =>{
-        gsap.fromTo('title',{opacity:0},{opacity:1,duration:1})
+
+        const menuTimeline = gsap.timeline({
+            
+            scrollTrigger:{
+                trigger:'#menu',
+                start:'top 20%',
+                end:'top 95%',
+                scrub:1.5
+            }
+        })
+        .from('.cocktail-tabs button',{
+            opacity:0,stagger:{amount:1},duration:3
+        })
+        
+    })
+
+
+
+    useGSAP(() =>{      
+        
+        gsap.fromTo('#title',{opacity:0},{opacity:1,duration:1})
         gsap.fromTo('.cocktail img',{opacity:0,xPercent:-100},{opacity:1,xPercent:0,duration:1,ease:'power1.inOut'})
         gsap.fromTo('.details h2',{opacity:0,yPercent:-100},{opacity:1,yPercent:0,duration:1,ease:'power1.inOut'})
         gsap.fromTo('.details p',{opacity:0,yPercent:-100},{opacity:1,yPercent:0,duration:1,ease:'power1.inOut'})
+
+        
     },[currentIndex]);
 
     const totalCocktails = sliderLists.length
@@ -35,21 +55,7 @@ const Menu = () => {
     const prevCocktail = getCocktailAt(-1);
     const nextCocktail = getCocktailAt(1);
 
-    useGSAP(() =>{
-        const menuSplit = SplitText.create('.cocktail-tabs',{type:'tabs'})
-
-        const menuTimeline = gsap.timeline({
-            scrollTrigger:{
-                trigger:'#menu',
-                start:'top 40%',
-                end:'top 95%',
-                scrub:1.5
-            }
-        })
-        .from('.cocktail-tabs',{
-            opacity:0,stagger:{amount:1.5},duration:3
-        })
-    })
+    
 
 
   return (
