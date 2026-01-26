@@ -1,9 +1,12 @@
 import React from 'react'
-import { featureLists, goodLists } from '../../constants'
+import { featureLists, goodLists } from '../constants'
 import { Features } from 'tailwindcss'
 import { useMediaQuery } from 'react-responsive'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+
+import check from '../assets/check.png'
+import under_image from '../assets/under-img.jpg'
 
 const Art = () => {
 
@@ -39,7 +42,7 @@ const Art = () => {
                 <ul className='space-y-4 will-fade'>
                     {goodLists.map((Features , index) => (
                         <li key={index} className='flex items-center gap-2'>
-                            <img src="images/check.png" alt="check" />
+                            <img src={check} alt="check" />
                             <p>{Features}</p>
                         </li>
                     ))}
@@ -48,7 +51,7 @@ const Art = () => {
 
                 <div className="cocktail-img">
                     <img 
-                    src="/images/under-img.jpg" 
+                    src={under_image} 
                     alt="" 
                     className='abs-center masked-img size-full object-contain' 
                     />
@@ -57,7 +60,7 @@ const Art = () => {
                 <ul className='space-y-4 will-fade'>
                     {featureLists.map((Features , index) => (
                         <li key={index} className='flex items-center justify-start gap-2'>
-                            <img src="images/check.png" alt="check" />
+                            <img src={check} alt="check" />
                             <p className='md:w-fit w-60'>{Features}</p>
                         </li>
                     ))}
@@ -66,8 +69,8 @@ const Art = () => {
             <div className="masked-container">
                 <h2 className="will-fade">Sip-worthy perfection</h2>
                 <div className="masked-content">
-                    <h3>Crafted with Care Just for you</h3>
-                    <p>this isn't just a drink it is speacialy made for you</p>
+                    <h3>Crafted with Care </h3>
+                    {/* <p>this isn't just a drink it is speacialy made for you</p> */}
                 </div>
             </div>
         </div>

@@ -1,11 +1,14 @@
 import React from 'react'
-import { cocktailLists, mockTailLists } from '../../constants'
+import { cocktailLists, mockTailLists } from '../constants'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger,SplitText } from 'gsap/all'
 import gsap from 'gsap'
 import { useMediaQuery } from 'react-responsive'
 
-gsap.registerPlugin(ScrollTrigger,)
+import c_left_leaf from '../assets/cocktail-left-leaf.png'
+import c_right_leaf from '../assets/cocktail-right-leaf.png'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Cocktails = () => {
 
@@ -13,7 +16,7 @@ const Cocktails = () => {
 
     const fromVars1 = isMobile
       ? { x: -100, y:100 , rotate:45}
-      : { x: -100, y: -100, };
+      : { x: -100, y: -500,ease:'power1.InOut' };
     
     const toVars1 = isMobile
       ? { x: -100, y:300, rotate: 10 }
@@ -43,12 +46,12 @@ const Cocktails = () => {
 
   return (
     <section id='cocktails' className='noisy'>
-        <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id='c-left-leaf' />
-        <img src="/images/cocktail-right-leaf.png" alt="r-leaf" id='c-right-leaf'/>
+        <img src={c_left_leaf} alt="l-leaf" id='c-left-leaf' />
+        <img src={c_right_leaf} alt="r-leaf" id='c-right-leaf'/>
 
         <div className="list">
             <div className="popular">
-                <h2>Most popular cocktails</h2>
+                {/* <h2>Most popular cocktails</h2> */}
                 <ul>
                     {cocktailLists.map(({name ,country,detail,price}) => (
                         <li key={name}>
@@ -62,7 +65,7 @@ const Cocktails = () => {
                 </ul>
             </div>
             <div className="Loved">
-                <h2>Most Loved mocktails</h2>
+                <h2>Skills</h2>
                 <ul>
                     {mockTailLists.map(({name ,country,detail,price}) => (
                         <li key={name}>

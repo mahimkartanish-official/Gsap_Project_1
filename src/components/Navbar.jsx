@@ -1,5 +1,5 @@
 import React from 'react'
-import { navLinks } from '../../constants'
+import { navLinks } from '../constants'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
@@ -29,13 +29,13 @@ const Navbar = () => {
         <div>
             <a href="#home" className='flex items-center gap-2'>
                 <img src="/images/logo.png" alt="" />
-                <p>Company name</p>
+                <p>Portfolio</p>
             </a>
 
 
             <ul>
                 {navLinks.map((Links)=>(
-                    <li key={Links.id}>{Links.title}</li>
+                    <li key={Links.id}><a href={Links.links}>{Links.title}</a></li>
                 ))}
             </ul>
         </div>

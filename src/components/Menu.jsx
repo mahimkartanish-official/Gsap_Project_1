@@ -1,36 +1,26 @@
 'use client'
 import React, { useState } from 'react'
-import { sliderLists } from '../../constants'
+import { sliderLists } from '../constants'
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import { useRef } from 'react';
+
+import slider_left_leaf from '../assets/slider-left-leaf.png'
+import slider_right_leaf from '../assets/slider-right-leaf.png'
+import right_arrow from '../assets/right-arrow.png'
+import left_arrow from '../assets/left-arrow.png'
+// import drink1 from '../assets/drink1.png'
+// import drink2 from '../assets/drink2.png'
+// import drink3 from '../assets/drink3.png'
+// import drink4 from '../assets/drink4.png'
+
 
 const Menu = () => {
 
     const contentRef = useRef();
 
     const [currentIndex,setCurrentIndex] = useState(0);
-
-    useGSAP(() =>{
-
-        const menuTimeline = gsap.timeline({
-            
-            scrollTrigger:{
-                trigger:'#menu',
-                start:'top 40%',
-                end:'top 95%',
-                scrub:1.5
-            }
-        })
-        .from('.cocktail-tabs button',{
-            opacity:0,stagger:{amount:1},duration:3
-        })
-        .to('#m-right-leaf',{y:100 , ease:'power1.inOut'})
-        
-    })
-
-
 
     useGSAP(() =>{      
         
@@ -41,6 +31,32 @@ const Menu = () => {
 
         
     },[currentIndex]);
+
+    
+
+    useGSAP(() =>{
+
+        const menuTimeline = gsap.timeline({
+            
+            scrollTrigger:{
+                trigger:'#menu',
+                start:'top 40%',
+                end:'top 95%',
+                scrub:1.5
+                
+            }
+        })
+        menuTimeline.from('.cocktail-tabs button',{
+            opacity:0,stagger:{amount:1},duration:3
+        })
+        .to('#m-right-leaf',{y:100 , ease:'power1.inOut'})
+        
+    })
+
+
+
+
+    
 
     const totalCocktails = sliderLists.length
     const goToSlide = (index)=>{
@@ -61,8 +77,8 @@ const Menu = () => {
 
   return (
     <section id='menu' aria-labelledby='menu-heading'>
-        <img src="/images/slider-left-leaf.png" alt="left-leaf" id='m-left-leaf' />
-        <img src="/images/slider-right-leaf.png" alt="right-leaf" id='m-right-leaf' />
+        <img src={slider_left_leaf} alt="left-leaf" id='m-left-leaf' />
+        <img src={slider_right_leaf} alt="right-leaf" id='m-right-leaf' />
 
         <h2 id="menu-heading" className="sr-only">
             Cocktail
@@ -87,11 +103,11 @@ const Menu = () => {
             <div className="arrows">
                 <button className="text-left" onClick={() => goToSlide(currentIndex-1)}>
                     <span>{prevCocktail.name}</span>
-                    <img src="/images/right-arrow.png" alt="right-arrow" aria-hidden='true' />
+                    <img src={right_arrow} alt="right-arrow" aria-hidden='true' />
                 </button>
                 <button className="text-right" onClick={() => goToSlide(currentIndex+1)}>
                     <span>{nextCocktail.name}</span>
-                    <img src="/images/left-arrow.png" alt="left-arrow" aria-hidden='true' />
+                    <img src={left_arrow} alt="left-arrow" aria-hidden='true' />
                 </button>
             </div>
             <div className="cocktail">

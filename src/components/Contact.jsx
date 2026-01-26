@@ -1,17 +1,20 @@
 import React from 'react'
-import { openingHours, socials } from '../../constants'
+import { openingHours, socials } from '../constants'
+
+import footer_right_leaf from '../assets/footer-right-leaf.png'
+import footer_left_leaf from '../assets/footer-left-leaf.png'
 
 const Contact = () => {
   return (
     <footer id='contact'>
-        <img src="/images/footer-right-leaf.png" alt="leaf-right" id='f-right-leaf' />
-        <img src="/images/footer-left-leaf.png" alt="leaf-left" id='f-left-leaf' />
+        <img src={footer_left_leaf} alt="leaf-right" id='f-right-leaf' />
+        <img src={footer_right_leaf} alt="leaf-left" id='f-left-leaf' />
 
         <div className="content">
-            <h2>Where to find us</h2>
+            <h2>Thank You</h2>
 
             <div>
-                <h3>Visit Our Bar</h3>
+                <h3>Hope you liked it</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur aspernatur dolorum doloribus recusandae distinctio tempore iure incidunt. Dolores explicabo aut quis, exercitationem ducimus adipisci consectetur quibusdam debitis optio iusto tempore.</p>
             </div>
 
@@ -21,7 +24,7 @@ const Contact = () => {
                 <p>mahimkartanish@gmail.com</p>
             </div>
 
-            <div>
+            {/* <div>
                 <h3>Opening Hours</h3>
                 {openingHours.map((time) => (
                     <p key={time.day}>
@@ -35,7 +38,7 @@ const Contact = () => {
                 <div>
                     {socials.map}
                 </div>
-            </div>
+            </div> */}
         </div>
 
 

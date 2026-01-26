@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 
+
+
+
 @font-face {
     font-family: "Modern Negra";
     src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
@@ -48,6 +51,10 @@ body {
     backdrop-filter: blur(5px);
 }
 
+@utility masked_gradient{
+    background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0%, var(--color-amber-50) 50%, var(--color-amber-50) 100%);
+}
+
 @utility radial-gradient {
     background: radial-gradient(
             circle at center,
@@ -58,10 +65,17 @@ body {
 }
 
 @utility masked-img {
-    mask-image: url("/images/mask-img.png");
+    mask-image: url("./assets/mask-img.png");
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: 50%;
+}
+
+@utility masked-div{
+    mask-image: url(".assets/black_helmet.png");
+    mask-repeat: no-repeat;
+    mask-position:center;
+    mask-size:50%;
 }
 
 @layer components {
@@ -69,7 +83,7 @@ body {
         @apply w-full overflow-x-hidden;
     }
 
-    nav {   
+    nav {
 
         /* box-shadow: 0 0 15px s5px rgba(0, 0, 0, 0.8); */
         @apply fixed z-50 w-full ;
@@ -92,7 +106,7 @@ body {
     }
 
     .noisy {
-        @apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+        @apply absolute inset-0 size-full bg-[url("./assets/noise.png")];
     }
 
     #hero {
@@ -349,15 +363,64 @@ body {
         }
     }
 
+    #masked_person{
+        @apply relative w-full md:mt-40 mt-0 2xl:px-0 px-5 py-20 masked_gradient bg-amber-50;
+
+        #Title{
+            position: absolute;
+            /* background-color: red; */
+            top:25%;
+            border-radius: 20px;
+            margin: 10px;
+            padding:50px;
+            /* transform: translateX(-200px); */
+            /* opacity: 0; */
+        }
+        #div-left{
+            position: absolute;
+            top: 50%;
+            background-color: var(--color-amber-100);
+            color:black;
+            padding: 50px;
+        }
+        #div-right{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            background-color: var(--color-amber-100);
+            color:black;
+            padding: 50px;
+        }
+        #description{
+            position: absolute;
+            bottom: 0;
+            background-color: red;
+            height: 25%;
+            width: 90%;
+            margin: 5%;
+        }
+        .helmet-img-hover{
+            scale: 30%;
+            transform: translateY(-400px);
+        }
+        .helmet-img{
+            scale: 30%;
+            transform: translateY(-400px);
+        }
+        img{
+            scale: 75%;
+        }
+    }
+
     #contact {
         @apply relative md:mt-20 mt-0 px-4 text-center w-full overflow-hidden radial-gradient;
 
         #f-left-leaf {
-            @apply absolute bottom-0 left-0 pointer-events-none lg:w-fit w-1/3;
+            @apply absolute -bottom-10 -left-10 rotate-210 pointer-events-none lg:w-fit w-1/2;
         }
 
         #f-right-leaf {
-            @apply absolute top-0 right-0 pointer-events-none hidden lg:block;
+            @apply absolute top-0 right-0 rotate-180 pointer-events-none hidden lg:block;
         }
 
         .content {
